@@ -1,0 +1,137 @@
+<div class='container' style='padding-top: 5px' ng-show='createbracket.isPoolOpen'>
+	<div class='mypanel zero' id='0'>
+		<h3>Enter a name for your bracket</h3>
+		<h4 style='margin: auto; text-align: center;'>First</h4>
+		<input type='text' id='bracket-name' class='form-control has-error' ng-model='value' ng-change='createbracket.checkName(createbracket.getCurrentUser())'/>
+		<h4 style='margin: auto; text-align: center;'>Last</h4>
+		<input type='text' id='bracket-name2' class='form-control has-error' ng-model='value2' ng-change='createbracket.checkName(createbracket.getCurrentUser())'/>
+		<p class='help-block' id='help-block1'>Oops! Looks like you've already got a bracket with that name.</p>
+		<div class='center-nav'>
+			<a href='/mybrackets' class='btn btn-primary back'><i class="fa fa-arrow-left"></i> Back</a>
+			<a href='#' ng-click='createbracket.nextDiv(0, createbracket.getCurrentUser())' class='btn btn-primary next'>Next <i class="fa fa-arrow-right"></i></a>
+		</div>
+	</div>
+
+	<div class='mypanel one' id='1' style='display: none' ng-show='createbracket.isPoolOpen'>
+		<h3>Make your picks</h3>
+		<div class='bracket-div'>
+			<div class='floating-div-master center-block'>
+				<div ng-repeat="number in createbracket.range(1)" class='one center-block'>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{number + "1"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=''></input>
+				</div>
+				<p>Tie Breaker (Total Points)</p>
+				<input type='text' value='0' class='tiebreaker-space' id='tiebreaker-number'/>
+			</br>
+			<div ng-repeat="number in createbracket.range(1)" class='four'>
+				<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{number + "4"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=''></input>
+				<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 1) + "4"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+			</div>
+			<div ng-repeat="number in createbracket.range(1)" class='two' >
+				<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{number + "2"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+				<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 1) + "2"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+			</div>
+			<div ng-repeat="number in createbracket.range(1)" class='four' >
+				<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 2)+ "4"}}'  ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+				<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 3) + "4"}}'  ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+			</div>
+		</div>
+
+		<div class='row row-sm-flex-center seven-cols bracket'>
+
+			<div class='col-md-1'>
+				<div ng-repeat="number in createbracket.range(16)" class='sixty-four' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{number + "64"}}' ng-dblclick='createbracket.changeValue($event, createbracket.isAdmin())' value="{{createbracket.mb[0][number]}}" placeholder='{{createbracket.seeds[number]}}'></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 1) + "64"}}' ng-dblclick='createbracket.changeValue($event, createbracket.isAdmin())' value="{{createbracket.mb[0][number + 1]}}" placeholder='{{createbracket.seeds[number + 1]}}'></input>
+				</div>
+				<div style='height: 5px'/>
+				<div ng-repeat="number in createbracket.range(16)" class='sixty-four' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 16) + "64"}}' ng-dblclick='createbracket.changeValue($event, createbracket.isAdmin())' value="{{createbracket.mb[0][number + 16]}}" placeholder='{{createbracket.seeds[number]}}'></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 17) + "64"}}' ng-dblclick='createbracket.changeValue($event, createbracket.isAdmin())' value="{{createbracket.mb[0][number + 17]}}" placeholder='{{createbracket.seeds[number + 1]}}'></input>
+				</div>
+			</div>
+
+			<div class='col-md-1'>
+				<div ng-repeat="number in createbracket.range(8)" class='thirty-two-one' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{number + "32"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 1) + "32"}}'  ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+				</div>
+				<div ng-repeat="number in createbracket.range(8)" class='thirty-two-two' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 8)+ "32"}}'  ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 9) + "32"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+				</div>
+			</div>
+
+			<div class='col-md-1'>
+				<div ng-repeat="number in createbracket.range(4)" class='sixteen-one' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{number + "16"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 1) + "16"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+				</div>
+				<div ng-repeat="number in createbracket.range(4)" class='sixteen-two' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 4)+ "16"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 5) + "16"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+				</div>
+			</div>
+
+			<div class='col-md-1'>
+				<div ng-repeat="number in createbracket.range(2)" class='eight-one' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{number + "8"}}'  ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 1) + "8"}}'  ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+				</div>
+				<div ng-repeat="number in createbracket.range(2)" class='eight-two' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 2)+ "8"}}'  ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 3) + "8"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+				</div>
+			</div>
+
+			<div class='col-md-1'>
+				<div ng-repeat="number in createbracket.range(2)" class='eight-one' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 4)+ "8"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 5) + "8"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+				</div>
+				<div ng-repeat="number in createbracket.range(2)" class='eight-two' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 6)+ "8"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 7) + "8"}}'  ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+				</div>
+			</div>
+
+			<div class='col-md-1'>
+				<div ng-repeat="number in createbracket.range(4)" class='sixteen-one' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 8)+ "16"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 9) + "16"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+				</div>
+				<div ng-repeat="number in createbracket.range(4)" class='sixteen-two' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 12)+ "16"}}'  ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())' value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 13) + "16"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+				</div>
+			</div>
+
+			<div class='col-md-1'>
+				<div ng-repeat="number in createbracket.range(8)" class='thirty-two-one' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 16)+ "32"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 17) + "32"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+				</div>
+				<div ng-repeat="number in createbracket.range(8)" class='thirty-two-two' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 24)+ "32"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 25) + "32"}}' ng-dblclick='createbracket.resetSpace($event, masterbracket.isAdmin())'  value=""></input>
+				</div>
+			</div>
+
+			<div class='col-md-1'>
+				<div ng-repeat="number in createbracket.range(16)" class='sixty-four' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 32) + "64"}}' ng-dblclick='createbracket.changeValue($event, createbracket.isAdmin())' value="{{createbracket.mb[0][number + 32]}}" placeholder='{{createbracket.seeds[number]}}'></input>
+					<input type='submit'sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 33) + "64"}}' ng-dblclick='createbracket.changeValue($event, createbracket.isAdmin())' value="{{createbracket.mb[0][number + 33]}}" placeholder='{{createbracket.seeds[number + 1]}}'></input>
+				</div>
+				<div style='height: 5px'/>
+				<div ng-repeat="number in createbracket.range(16)" class='sixty-four' >
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control top' id='{{(number + 48) + "64"}}' ng-dblclick='createbracket.changeValue($event, createbracket.isAdmin())' value="{{createbracket.mb[0][number + 48]}}" placeholder='{{createbracket.seeds[number]}}'></input>
+					<input type='submit' sglclick='createbracket.advanceTeam($event, createbracket.isAdmin())' ng-blur='createbracket.changeToButton($event, createbracket.isAdmin())' class='bracket-space form-control bottom' id='{{(number + 49) + "64"}}' ng-dblclick='createbracket.changeValue($event, createbracket.isAdmin())' value="{{createbracket.mb[0][number + 49]}}" placeholder='{{createbracket.seeds[number + 1]}}'></input>
+				</div>
+			</div>
+		</div>
+
+		<div class='center-nav' style='margin-top: 20px;' ng-show='createbracket.isPoolOpen'>
+			<a ng-click='createbracket.lastDiv(1)' class='btn btn-primary back'><i class="fa fa-arrow-left"></i> Back</a>
+			<a href='/mybrackets' ng-click='createbracket.nextDiv(1, createbracket.getCurrentUser())' id='finish' class='btn btn-primary next'>Finish <i class="fa fa-arrow-right"></i></a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,101 @@
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Tournament Challenge 
+                    </a>
+                </li>
+                <li>
+                    <a class='sidebar-link' id='users2' ng-click='admin.activate($event)' href="#" style='background-color: #2980b9; color: #fff'><i class="fa fa-user"></i> Users</a>
+                </li>
+                <li>
+                    <a class='sidebar-link' id='settings2' ng-click='admin.activate($event)' href="#"><i class="fa fa-cog"></i> Settings</a>
+                </li>
+            </ul>
+
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <div class="container-fluid">
+            <a href="#menu-toggle" class="btn btn-default fa fa-chevron-left" id="menu-toggle" style='border: none; background-color: #ecf0f1;'></a>
+            <div class='space' id='users'>
+              <h1>Users</h1>
+              <ul class="list-group user-list">
+                <li class="list-group-item" ng-repeat="user in admin.users">
+                  <div class="user-info">
+                    <strong>{{user.email}}</strong>
+                    </br>
+                    <span>Number of brackets: {{user.brackets.length}}</span>
+                  </div>
+                  <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+                </li>
+            </ul>
+          </div>
+          <div class='space' id='settings' style='display: none;'>
+            <h1>Settings</h1>
+            <h4>Date and Time Pool Opens</h4>
+            <div>
+              <div class="row">
+              <div class='col-sm-6'>
+                  <div class="form-group">
+                    <div class='input-group date' id='datetimepicker1' style='color: #3498db'>
+                      <input type='text' id='date' class="form-control" placeholder='{{admin.poolOpens | date: "MM/dd/yyyy h:mm a"}}'/>
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4>Date and Time Pool Closes</h4>
+            <div>
+              <div class="row">
+              <div class='col-sm-6'>
+                  <div class="form-group">
+                    <div class='input-group date' id='datetimepicker2' style='color: #3498db'>
+                      <input type='text' id='date2' class="form-control" placeholder="{{admin.poolCloses | date: 'MM/dd/yyyy h:mm a'}}"/>
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class='btn btn-primary save-changes fa fa-floppy-o' ng-click='admin.saveChanges()'> Save Changes</button>
+          </div>
+        </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $('#menu-toggle').toggleClass('fa-bars fa-chevron-left');
+    });
+
+    $('.sidebar-nav li a').click(function(e) {
+      if (e.target.id === 'users2') {
+        $('.space').css('display', 'none');
+        $('#users').css('display', 'block');
+      } else if (e.target.id === 'settings2') {
+        $('.space').css('display', 'none');
+        $('#settings').css('display', 'block');
+      }
+    });
+
+    $('#datetimepicker1').datetimepicker();
+    $('#datetimepicker2').datetimepicker();
+    </script>

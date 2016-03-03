@@ -1,0 +1,11 @@
+.col-md-4 .section {
+	background-color: #3498db;
+	border-radius: 5px;
+	color: white;
+	margin: 5px;
+}
+
+.col-md-4 h3 {
+	text-align: center;
+	padding: 5px;
+}

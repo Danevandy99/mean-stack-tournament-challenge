@@ -1,0 +1,23 @@
+.btn-twitter {
+	background-color: #55acee;
+	border: none;
+	border-bottom: 1px solid #4c9bd7;
+}
+
+.btn-twitter:hover {
+	background-color: #55acee;
+	border: none;
+	margin-top: 6px;
+}
+
+.btn-facebook {
+	background-color: #3B5998;
+	border: none;
+	border-bottom: 1px solid #355089;
+}
+
+.btn-facebook:hover {
+	background-color: #3B5998;
+	margin-top: 1px;
+	border: none;
+}
