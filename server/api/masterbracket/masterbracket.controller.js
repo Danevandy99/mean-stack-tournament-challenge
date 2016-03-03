@@ -327,7 +327,7 @@ export function create(req, res) {
         }
 
         bracket.score = score;
-        bracket.pickPercentage = Math.round((picksMade / (picksMade + picksMissed)) * 100);
+        bracket.pickPercentage = 0//Math.round((picksMade / (picksMade + picksMissed)) * 100);
         var number = a;
         users[number].brackets.splice(b, 1, bracket);
         users[number].saveAsync();
