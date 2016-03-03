@@ -347,9 +347,7 @@ export function create(req, res) {
     }
 
   })
-  .catch(err => {
-    console.error(err);
-  });
+  .catch(handleError(err));
 }
 
 // Updates an existing Masterbracket in the DB
