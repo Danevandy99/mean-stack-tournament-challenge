@@ -59,7 +59,10 @@ module.exports = function (grunt) {
     watch: {
       babel: {
         files: ['<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js'],
-        tasks: ['newer:babel:client']
+        tasks: ['newer:babel:client'],
+        server: {
+          presets: ['es2015']
+        }
       },
       ngconstant: {
         files: ['<%= yeoman.server %>/config/environment/shared.js'],
