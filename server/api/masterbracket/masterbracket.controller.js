@@ -106,7 +106,7 @@ export function create(req, res) {
   var createBracket = new Masterbracket();
   createBracket.bracket = req.body;
   createBracket.save();
-  User.findAsync({}, '-salt -password')
+  User.findAsync()
   .then(users => {
     Bracket.findAsync()
       .then(rankings => {
