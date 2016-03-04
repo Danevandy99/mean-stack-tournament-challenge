@@ -4,16 +4,28 @@
 		<div class='col-md-4'>
 			<div class='section'>
 				<h3>Champions</h3>
+				<div ng-repeat='champion in stats.champions' class='entry'>
+				<p>{{champion.name}}</p>
+				<p>{{champion.percentage}}%</p>
+				</div>
 			</div>
 		</div>	
 		<div class='col-md-4'>
 			<div class='section'>
 				<h3>Championship</h3>
+				<div ng-repeat='championshipTeam in stats.championshipTeams' class='entry'>
+				<p>{{championshipTeam.name}}</p>
+				<p>{{championshipTeam.percentage}}%</p>
+				</div>
 			</div>
 		</div>
 		<div class='col-md-4'>
 			<div class='section'>
 				<h3>Final Four</h3>
+				<div ng-repeat='finalFourTeam in stats.finalFourTeams' class='entry'>
+				<p>{{finalFourTeam.name}}</p>
+				<p>{{finalFourTeam.percentage}}%</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -21,16 +33,28 @@
 		<div class='col-md-4'>
 			<div class='section'>
 				<h3>Elite Eight</h3>
+				<div ng-repeat='EliteEightTeam in stats.EliteEightTeams' class='entry'>
+				<p>{{EliteEightTeam.name}}</p>
+				<p>{{EliteEightTeam.percentage}}%</p>
+				</div>
 			</div>
 		</div>	
 		<div class='col-md-4'>
 			<div class='section'>
 				<h3>Sweet Sixteen</h3>
+				<div ng-repeat='SweetSixteenTeam in stats.SweetSixteenTeams' class='entry'>
+				<p>{{SweetSixteenTeam.name}}</p>
+				<p>{{SweetSixteenTeam.percentage}}%</p>
+				</div>
 			</div>
 		</div>
 		<div class='col-md-4'>
 			<div class='section'>
 				<h3>Round of 32</h3>
+				<div ng-repeat='Roundof32Team in stats.Roundof32' class='entry'>
+				<p>{{Roundof32Team.name}}</p>
+				<p>{{Roundof32Team.percentage}}%</p>
+				</div>
 			</div>
 		</div>
 	</div>
