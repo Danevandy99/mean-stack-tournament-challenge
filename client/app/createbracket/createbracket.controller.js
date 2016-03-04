@@ -50,7 +50,7 @@
 		}
 
 		nextDiv(id, user) {
-			if (id == 1) {
+			if (id == 2) {
 				var bracketArray = [];
 
 				var fieldArray = [];
@@ -171,7 +171,7 @@
 						
 					});
 				}
-			} else {
+			} else if (id === 1) {
 				var nameExists = false;
 				for (var i = 0; i < user.brackets.length; i++) {
 					if (user.brackets[i].name == document.getElementById('bracket-name').value + ' ' + document.getElementById('bracket-name2').value) {

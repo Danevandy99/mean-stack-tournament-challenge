@@ -1,5 +1,18 @@
 <div class='container' style='padding-top: 5px' ng-show='createbracket.isPoolOpen'>
 	<div class='mypanel zero' id='0'>
+		<h3>Pay Your $10 Entry Fee Through Paypal</h3>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style='margin: auto; text-align: center; margin-top: 50px; margin-bottom: 50px;'>
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="LG5HP3HNCSWJY">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+		<div class='center-nav'>
+			<a href='/mybrackets' class='btn btn-primary back'><i class="fa fa-arrow-left"></i> Back</a>
+		</div>
+	</div>
+
+	<div class='mypanel one' id='1' style='display: none;'>
 		<h3>Enter a name for your bracket</h3>
 		<h4 style='margin: auto; text-align: center;'>First</h4>
 		<input type='text' id='bracket-name' class='form-control has-error' ng-model='value' ng-change='createbracket.checkName(createbracket.getCurrentUser())'/>
@@ -12,7 +25,7 @@
 		</div>
 	</div>
 
-	<div class='mypanel one' id='1' style='display: none' ng-show='createbracket.isPoolOpen'>
+	<div class='mypanel two' id='2' style='display: none' ng-show='createbracket.isPoolOpen'>
 		<h3>Make your picks</h3>
 		<div class='bracket-div'>
 			<div class='floating-div-master center-block'>
