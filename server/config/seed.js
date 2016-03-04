@@ -40,7 +40,7 @@ Thing.find({}).removeAsync()
     });
   });
 
-User.find({'email': 'admin@example.com'}).removeAsync()
+User.find({'email': 'danevandy@hotmail.com'}).removeAsync()
   .then(() => {
     User.createAsync({
       provider: 'local',
