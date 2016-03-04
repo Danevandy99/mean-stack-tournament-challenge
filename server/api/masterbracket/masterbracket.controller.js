@@ -331,6 +331,7 @@ export function create(req, res) {
         var number = a;
         users[number].brackets.splice(b, 1, bracket);
         users[number].saveAsync();
+        console.log(JSON.stringify(users));
         var newRankings = new Bracket();
         newRankings.name = bracket.name;
         newRankings.score = bracket.score;
