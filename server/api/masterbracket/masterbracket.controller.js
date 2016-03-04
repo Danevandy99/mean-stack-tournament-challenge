@@ -328,10 +328,8 @@ export function create(req, res) {
 
         bracket.score = score;
         bracket.pickPercentage = 0;//Math.round((picksMade / (picksMade + picksMissed)) * 100);
-        var number = a;
-        users[number].brackets.splice(b, 1, bracket);
-        users[number].saveAsync();
-        console.log(JSON.stringify(users));
+        users[a].brackets.splice(b, 1, bracket);
+        console.log(JSON.stringify(a));
         var newRankings = new Bracket();
         newRankings.name = bracket.name;
         newRankings.score = bracket.score;
@@ -346,7 +344,9 @@ export function create(req, res) {
         newRankings.saveAsync();
       }
     }
-
+    for (var i = 0; i < users.length; i++) {
+      users[i].saveAsync();
+    }
   })
   .catch(handleError(res));
 }
