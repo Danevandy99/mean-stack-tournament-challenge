@@ -13,12 +13,15 @@ class RankingsController {
      this.brackets = [];
      this.masterbracket = [];
 
+    var eliminatedTeams = [];
+
     $http.get('/api/rankings/getrankings').then(response2 => {
       this.brackets = response2.data;
+      console.log(JSON.stringify(this.brackets[0]));
       $http.get('/api/masterbracket?round=1').then(response => {
         for (var a = 0; a < this.brackets.length; a++) {
           for (var i = 0; i < 32; i++) {
-            var id = this.brackets[a].name + i + '32';
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '32';
             var value = document.getElementById(id).value;
             if (response.data.toString().split(',')[i] == '') {
               document.getElementById(id).style.backgroundColor = '#3498db';
@@ -36,7 +39,7 @@ class RankingsController {
       $http.get('/api/masterbracket?round=2').then(response => {
         for (var a = 0; a < this.brackets.length; a++) {
           for (var i = 0; i < 16; i++) {
-            var id = this.brackets[a].name + i + '16';
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '16';
             var value = document.getElementById(id).value;
             if (response.data.toString().split(',')[i] == '') {
               document.getElementById(id).style.backgroundColor = '#3498db';
@@ -54,7 +57,7 @@ class RankingsController {
       $http.get('/api/masterbracket?round=3').then(response => {
         for (var a = 0; a < this.brackets.length; a++) {
           for (var i = 0; i < 8; i++) {
-            var id = this.brackets[a].name + i + '8';
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '8';
             var value = document.getElementById(id).value;
             if (response.data.toString().split(',')[i] == '') {
               document.getElementById(id).style.backgroundColor = '#3498db';
@@ -72,7 +75,7 @@ class RankingsController {
       $http.get('/api/masterbracket?round=4').then(response => {
         for (var a = 0; a < this.brackets.length; a++) {
           for (var i = 0; i < 4; i++) {
-            var id = this.brackets[a].name + i + '4';
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '4';
             var value = document.getElementById(id).value;
             if (response.data.toString().split(',')[i] == '') {
               document.getElementById(id).style.backgroundColor = '#3498db';
@@ -90,7 +93,7 @@ class RankingsController {
       $http.get('/api/masterbracket?round=5').then(response => {
         for (var a = 0; a < this.brackets.length; a++) {
           for (var i = 0; i < 2; i++) {
-            var id = this.brackets[a].name + i + '2';
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '2';
             var value = document.getElementById(id).value;
             if (response.data.toString().split(',')[i] == '') {
               document.getElementById(id).style.backgroundColor = '#3498db';
@@ -108,7 +111,7 @@ class RankingsController {
       $http.get('/api/masterbracket?round=6').then(response => {
         for (var a = 0; a < this.brackets.length; a++) {
           for (var i = 0; i < 1; i++) {
-            var id = this.brackets[a].name + i + '1';
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '1';
             var value = document.getElementById(id).value;
             if (response.data.toString().split(',')[i] == '') {
               document.getElementById(id).style.backgroundColor = '#3498db';
@@ -124,6 +127,134 @@ class RankingsController {
       });
 
     });
+  }
+
+  searchChange() {
+    this.$http.get('/api/masterbracket?round=1').then(response => {
+        for (var a = 0; a < this.brackets.length; a++) {
+          for (var i = 0; i < 32; i++) {
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '32';
+            if (document.getElementById(id) == null) {
+              break;
+            }
+            var value = document.getElementById(id).value;
+            if (response.data.toString().split(',')[i] == '') {
+              document.getElementById(id).style.backgroundColor = '#3498db';
+            } else if (response.data.toString().split(',')[i] === value) {
+              document.getElementById(id).style.backgroundColor = '#2ecc71';
+              document.getElementById(id).style.borderColor = '#27ae60';
+            } else {
+              document.getElementById(id).style.backgroundColor = '#e74c3c';
+              document.getElementById(id).style.borderColor = '#c0392b';
+            }
+          }
+        }
+      });
+
+      this.$http.get('/api/masterbracket?round=2').then(response => {
+        for (var a = 0; a < this.brackets.length; a++) {
+          for (var i = 0; i < 16; i++) {
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '16';
+            if (document.getElementById(id) == null) {
+              break;
+            }
+            var value = document.getElementById(id).value;
+            if (response.data.toString().split(',')[i] == '') {
+              document.getElementById(id).style.backgroundColor = '#3498db';
+            } else if (response.data.toString().split(',')[i] === value) {
+              document.getElementById(id).style.backgroundColor = '#2ecc71';
+              document.getElementById(id).style.borderColor = '#27ae60';
+            } else {
+              document.getElementById(id).style.backgroundColor = '#e74c3c';
+              document.getElementById(id).style.borderColor = '#c0392b';
+            }
+          }
+        }
+      });
+
+      this.$http.get('/api/masterbracket?round=3').then(response => {
+        for (var a = 0; a < this.brackets.length; a++) {
+          for (var i = 0; i < 8; i++) {
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '8';
+            if (document.getElementById(id) == null) {
+              break;
+            }
+            var value = document.getElementById(id).value;
+            if (response.data.toString().split(',')[i] == '') {
+              document.getElementById(id).style.backgroundColor = '#3498db';
+            } else if (response.data.toString().split(',')[i] === value) {
+              document.getElementById(id).style.backgroundColor = '#2ecc71';
+              document.getElementById(id).style.borderColor = '#27ae60';
+            } else {
+              document.getElementById(id).style.backgroundColor = '#e74c3c';
+              document.getElementById(id).style.borderColor = '#c0392b';
+            }
+          }
+        }
+      });
+
+      this.$http.get('/api/masterbracket?round=4').then(response => {
+        for (var a = 0; a < this.brackets.length; a++) {
+          for (var i = 0; i < 4; i++) {
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '4';
+            if (document.getElementById(id) == null) {
+              break;
+            }
+            var value = document.getElementById(id).value;
+            if (response.data.toString().split(',')[i] == '') {
+              document.getElementById(id).style.backgroundColor = '#3498db';
+            } else if (response.data.toString().split(',')[i] === value) {
+              document.getElementById(id).style.backgroundColor = '#2ecc71';
+              document.getElementById(id).style.borderColor = '#27ae60';
+            } else {
+              document.getElementById(id).style.backgroundColor = '#e74c3c';
+              document.getElementById(id).style.borderColor = '#c0392b';
+            }
+          }
+        }
+      });
+
+      this.$http.get('/api/masterbracket?round=5').then(response => {
+        for (var a = 0; a < this.brackets.length; a++) {
+          for (var i = 0; i < 2; i++) {
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '2';
+            if (document.getElementById(id) == null) {
+              break;
+            }
+            var value = document.getElementById(id).value;
+            if (response.data.toString().split(',')[i] == '') {
+              document.getElementById(id).style.backgroundColor = '#3498db';
+            } else if (response.data.toString().split(',')[i] === value) {
+              document.getElementById(id).style.backgroundColor = '#2ecc71';
+              document.getElementById(id).style.borderColor = '#27ae60';
+            } else {
+              document.getElementById(id).style.backgroundColor = '#e74c3c';
+              document.getElementById(id).style.borderColor = '#c0392b';
+            }
+          }
+        }
+      });
+
+      this.$http.get('/api/masterbracket?round=6').then(response => {
+        for (var a = 0; a < this.brackets.length; a++) {
+          for (var i = 0; i < 1; i++) {
+            var id = this.brackets[a].owner + this.brackets[a].name + i + '1';
+            if (document.getElementById(id) == null) {
+              break;
+            }
+            var value = document.getElementById(id).value;
+            if (response.data.toString().split(',')[i] == '') {
+              document.getElementById(id).style.backgroundColor = '#3498db';
+            } else if (response.data.toString().split(',')[i] === value) {
+              document.getElementById(id).style.backgroundColor = '#2ecc71';
+              document.getElementById(id).style.borderColor = '#27ae60';
+            } else {
+              document.getElementById(id).style.backgroundColor = '#e74c3c';
+              document.getElementById(id).style.borderColor = '#c0392b';
+            }
+          }
+        }
+      });
   }
 
   setWidth(score, potential, number) {

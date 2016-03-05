@@ -1,5 +1,68 @@
 h1 {
 	margin-bottom: 25px;
+  display: inline-block;
+}
+
+.search-box {
+  transition: width 0.6s, border-radius 0.6s, background 0.6s, margin-left 0.6s;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding-left: 15px;
+  cursor: text;
+  width: 300px;
+  border-radius: 5px;
+  background: #3498db;
+  color: #fff;
+  margin-left: 37%;
+  margin-top: 20px;
+  height: 40px;
+  float: right;
+}
+
+::-webkit-input-placeholder {
+   color: #fff;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #fff;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;  
+}
+
+:-ms-input-placeholder {  
+   color: #fff;  
+}
+
+.search-box:focus + label .search-icon {
+  color: #4493b9;
+}
+
+.search-box:focus + .search-submit {
+  height: 40px;
+}
+
+.search-submit {
+  transition: height 0.6s;
+  display: inline-block;
+  background-color: #3498db;
+  border: 0px;
+  border-radius: 5px;
+  color: #fff;
+  width: 300px;
+  margin: auto;
+  height: 60px;
+  float: right;
+}
+
+.search-icon {
+  position: relative;
+  left: -30px;
+  color: #fff;
+  cursor: pointer;
+  float: right;
 }
 
 .open {
