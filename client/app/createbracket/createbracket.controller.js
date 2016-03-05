@@ -5,6 +5,7 @@
 	class CreateBracketController {
 
 		constructor($http, Auth, $location, $scope) {
+			this.baseUrl = 'http://' + $location.host() + ":" +  $location.port();
 			this.$scope = $scope;
 			this.$location = $location;
 			this.$http = $http;
@@ -17,6 +18,8 @@
 				this.mb = response.data;
 			});
 			this.blanks = ['Field of 64', 'Round of 32', 'Sweet 16', 'Elite 8', 'Final Four', 'Championship', 'Champion'];
+
+			this.business = 'danevandy-facilitator@hotmail.com';
 
 			this.$http.get('/api/settings/').then(response => {
 				this.poolOpens = Date.parse(response.data[0].poolOpens);
@@ -168,7 +171,10 @@
 					entryObject.owner = user.email;
 					entryObject.bracket = bracketArray;
 					this.$http.post('/api/users/addbracket', entryObject).success(function(data, status) {
-						
+						document.getElementById('2').style.display = 'none';
+						document.getElementById('finish').style.display = 'block';
+					}).error(function(data, status) {
+						alert(JSON.stringify(data));
 					});
 				}
 			} else if (id === 1) {
@@ -239,8 +245,6 @@
 			if (true) {
 				var id = event.target.id;
 				document.getElementById(id).value = '';
-				var saveButton = document.getElementById('save-changes');
-				saveButton.style.display = 'inline-block';
 			}
 		}
 	}

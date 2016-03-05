@@ -11,5 +11,9 @@ router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
+router.post('/create_success', function(req, res) {
+	console.log(req.body);
+	res.redirect('http://localhost:9000/createbracket?payment_status=' + req.body.payment_status + '&payer_id=' + req.body.payer_id);
+})
 
 module.exports = router;
