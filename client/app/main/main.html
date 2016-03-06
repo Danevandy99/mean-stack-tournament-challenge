@@ -1,6 +1,128 @@
+<script src="jQuerySimpleCounter.js"></script>
+
 <header class="hero-unit" id="banner">
   <div class="container">
       <h1 style='z-index: 2; margin-top: 50px'>Vanderbilt Tournament Challenge</h1>
-    <img src="http://clipartion.com/wp-content/uploads/2015/10/basketball-knights-clipart.png" style='opacity: 0.9; z-index: 1; height: 100px;' alt="Tourney Challenge">
+    <img src="http://clipartion.com/wp-content/uploads/2015/10/basketball-knights-clipart.png" style='opacity: 0.9; z-index: 1; height: 100px; display: block; margin: auto; text-align: center;' alt="Tourney Challenge">
+    <a href='/signup' class='btn btn-large'>Sign Up</a>
   </div>
 </header>
+
+<div class='container scoring'>
+	<h1 style='margin: auto; text-align: center; display: block; margin-top: 30px; margin-bottom: 30px;'>Scoring By Round</h1>
+	<div class='row'>
+		<div class='col-md-4'>
+			<div class='padding'>
+				<h3>Round of 32</h3>
+				<h1 class='counter1'></h1>
+			</div>
+		</div>
+		<div class='col-md-4'>
+			<div class='padding'>
+				<h3>Sweet Sixteen</h3>
+				<h1 class='counter2'></h1>
+			</div>
+		</div>
+		<div class='col-md-4'>
+			<div class='padding'>
+				<h3>Elite Eight</h3>
+				<h1 class='counter3'></h1>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-md-4'>
+			<div class='padding'>
+				<h3>Final Four</h3>
+				<h1 class='counter4'></h1>
+			</div>
+		</div>
+		<div class='col-md-4'>
+			<div class='padding'>
+				<h3>Championship</h3>
+				<h1 class='counter5'></h1>
+			</div>
+		</div>
+		<div class='col-md-4'>
+			<div class='padding'>
+				<h3>The Champion</h3>
+				<h1 class='counter6'></h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class='distribution' style='background-color: #3498db; color: white; padding-bottom: 20px;'>
+	<div class='container'>
+		<h1 style='color: white; text-align: center; margin: auto; display: block; margin-top: 30px; margin-bottom: 30px;'>Winnings Distribution</h1>
+		<div class='row'>
+			<div class='col-md-offset-2 col-md-8'>
+				<div class='linear-space' style='padding: 10px; border-top: 1px solid #2980b9;'>
+					<p style='display: inline-block; margin-left: 10%; font-size: 15pt; width: 200px; text-align: center;'>1st</p>
+					<p style='display: inline-block; float: right; margin-right: 10%; font-size: 15pt; width: 200px; text-align: center;'>50%</p>
+				</div>
+				<div class='linear-space' style='padding: 10px; border-top: 1px solid #2980b9;'>
+					<p style='display: inline-block; margin-left: 10%; font-size: 15pt; width: 200px; text-align: center;'>2nd</p>
+					<p style='display: inline-block; float: right; margin-right: 10%; font-size: 15pt; width: 200px; text-align: center;'>20%</p>
+				</div>
+				<div class='linear-space' style='padding: 10px; border-top: 1px solid #2980b9;'>
+					<p style='display: inline-block; margin-left: 10%; font-size: 15pt; width: 200px; text-align: center;'>3rd</p>
+					<p style='display: inline-block; float: right; margin-right: 10%; font-size: 15pt; width: 200px; text-align: center;'>15%</p>
+				</div>
+				<div class='linear-space' style='padding: 10px; border-top: 1px solid #2980b9;'>
+					<p style='display: inline-block; margin-left: 10%; font-size: 15pt; width: 200px; text-align: center;'>4th</p>
+					<p style='display: inline-block; float: right; margin-right: 10%; font-size: 15pt; width: 200px; text-align: center;'>10%</p>
+				</div>
+				<div class='linear-space' style='padding: 10px; border-top: 1px solid #2980b9;'>
+					<p style='display: inline-block; margin-left: 10%; font-size: 15pt; width: 200px; text-align: center;'>5th</p>
+					<p style='display: inline-block; float: right; margin-right: 10%; font-size: 15pt; width: 200px; text-align: center;'>5%</p>
+				</div>
+				<div class='linear-space' style='padding: 10px; border-top: 1px solid #2980b9;'>
+					<p style='display: inline-block; margin-left: 10%; font-size: 15pt; width: 200px; text-align: center;'>Last Place 'Winner'</p>
+					<p style='display: inline-block; float: right; margin-right: 10%; font-size: 15pt; width: 200px; text-align: center;'>$10</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.counter1').jQuerySimpleCounter({
+			start: 0,
+			end: 1,
+			duration: 1000
+		});
+
+		$('.counter2').jQuerySimpleCounter({
+			start: 0,
+			end: 2,
+			duration: 1000
+		});
+
+		$('.counter3').jQuerySimpleCounter({
+			start: 0,
+			end: 4,
+			duration: 1000
+		});
+
+		$('.counter4').jQuerySimpleCounter({
+			start: 0,
+			end: 8,
+			duration: 1000
+		});
+
+		$('.counter5').jQuerySimpleCounter({
+			start: 0,
+			end: 16,
+			duration: 1000
+		});
+
+		$('.counter6').jQuerySimpleCounter({
+			start: 0,
+			end: 32,
+			duration: 1000
+		});
+	});
+	
+</script>

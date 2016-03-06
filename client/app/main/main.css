@@ -15,13 +15,50 @@
 
 .hero-unit {
   position: relative;
-  padding: 30px 15px;
-  color: #F5F5F5;
+  padding-top: 50px;
+  padding-bottom: 75px;
+  color: #ffffff;
   text-align: center;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   background: #3498db;
+}
+
+.btn-large {
+  border: none;
+  background-color: white;
+  font-size: 15pt;
+  padding: 5px 30px 5px 30px;
+  margin-top: 20px;
+  border-bottom: 1px solid #bdc3c7;
+  color: #3498db;
+}
+
+.btn-large:hover {
+  color: #3498db;
+  border: none;
+  border-top: 1px solid #3498db;
 }
 
 .navbar-text {
   margin-left: 15px;
+}
+
+.scoring {
+  margin-bottom: 100px;
+}
+
+.row .col-md-4 .padding {
+  background-color: #3498db;
+  border-radius: 5px;
+  border-bottom: 2px solid #2980b9;
+  text-align: center;
+  color: white;
+  margin: 5px;
+}
+
+.row .col-md-4 .padding h1 {
+  font-size: 45pt;
+}
+
+.row .col-md-4 .padding h3 {
+  padding-top: 20px;
 }

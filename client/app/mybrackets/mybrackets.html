@@ -165,5 +165,5 @@
 	<div style='margin-left: -15px; margin-top: 20px; border-radius: 5px; margin-right: 14px;' ng-show='mybrackets.brackets.length < 1' class='bracket-row'>
 		<p>It doesn't look like you've created any brackets yet!</p>
 	</div>
-	<a ng-show='mybrackets.isPoolOpen' href='/createbracket' class='btn btn-primary' style='margin-top: 10px; margin-left: -15px;'><i class="fa fa-plus"></i> Create a Bracket</a>
+	<a ng-show='mybrackets.isPoolOpen || mybrackets.isAdmin()' href='/createbracket' class='btn btn-primary' style='margin-top: 10px; margin-left: -15px;'><i class="fa fa-plus"></i> Create a Bracket</a>
 </div>
