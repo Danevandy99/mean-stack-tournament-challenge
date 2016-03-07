@@ -1,6 +1,6 @@
 <div class='container'>
 	<h1>Current Rankings</h1>
-	<input style='display: inline-block; margin-top: 20px;' ng-model='search' ng-change='rankings.searchChange()' id="search-box" type="text" class="search-box" placeholder="Search"></input>
+	<input style='display: inline-block; margin-top: 20px;' ng-model='search' ng-blur='rankings.searchChange()' ng-change='rankings.searchChange()' id="search-box" type="text" class="search-box" placeholder="Search"></input>
 	<div class='brackets-wrapper' style='background-color: #3498db; border-radius: 5px; padding: 5px;'>
 		<div class='desc-header' style='padding: 10px; padding-top: 7px; padding-bottom: 7px;'>
 			<p style='width: 40px; text-align: center;'>Rank</p>
