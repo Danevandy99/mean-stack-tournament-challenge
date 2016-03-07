@@ -12,249 +12,281 @@ class RankingsController {
 	   this.getCurrentUser = Auth.getCurrentUser;
      this.brackets = [];
      this.masterbracket = [];
+     this.round1 = [];
+     this.round2 = [];
+     this.round3 = [];
+     this.round4 = [];
+     this.round5 = [];
+     this.round6 = [];
 
-    var eliminatedTeams = [];
+     $http.get('/api/rankings/getrankings').then(response1 => {
+      this.brackets = response1.data;
+      $http.get('/api/masterbracket?round=1').then(response2 => {
+        this.round1 = response2.data.toString().split(',');
+        $http.get('/api/masterbracket?round=2').then(response3 => {
+          this.round2 = response3.data.toString().split(',');
+          $http.get('/api/masterbracket?round=3').then(response4 => {
+            this.round3 = response4.data.toString().split(',');
+            $http.get('/api/masterbracket?round=4').then(response5 => {
+              this.round4 = response5.data.toString().split(',');
+              $http.get('/api/masterbracket?round=5').then(response6 => {
+                this.round5 = response6.data.toString().split(',');
+                $http.get('/api/masterbracket?round=6').then(response7 => {
+                  this.round6 = response7.data.toString().split(',');
+                  for (var a = 0; a < this.brackets.length; a++) {
 
-    $http.get('/api/rankings/getrankings').then(response2 => {
-      this.brackets = response2.data;
-      console.log(JSON.stringify(this.brackets[0]));
-      $http.get('/api/masterbracket?round=1').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 32; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '32';
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
-        }
+                    var eliminatedTeams = [];
+                    var i = 0;
+
+                    for ( i = 0; i < 32; i++) {
+                      var id = this.brackets[a].owner + this.brackets[a].name + i + '32';
+                      var value = document.getElementById(id).value;
+                      if (this.round1[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+                        document.getElementById(id).style.backgroundColor = '#3498db';
+                      } else if (this.round1[i] === value) {
+                        document.getElementById(id).style.backgroundColor = '#2ecc71';
+                        document.getElementById(id).style.borderColor = '#27ae60';
+                      } else {
+                        document.getElementById(id).style.backgroundColor = '#e74c3c';
+                        document.getElementById(id).style.borderColor = '#c0392b';
+                      }
+
+                      if (this.round1[i] !== '' && this.round1[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+                          eliminatedTeams.push(value);
+                      }
+                    }
+
+                    for ( i = 0; i < 16; i++) {
+                      var id = this.brackets[a].owner + this.brackets[a].name + i + '16';
+                      var value = document.getElementById(id).value;
+                      if (this.round2[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+                        document.getElementById(id).style.backgroundColor = '#3498db';
+                      } else if (this.round2[i] === value) {
+                        document.getElementById(id).style.backgroundColor = '#2ecc71';
+                        document.getElementById(id).style.borderColor = '#27ae60';
+                      } else {
+                        document.getElementById(id).style.backgroundColor = '#e74c3c';
+                        document.getElementById(id).style.borderColor = '#c0392b';
+                      }
+
+                      if (this.round2[i] !== '' && this.round2[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+                          eliminatedTeams.push(value);
+                      }
+                    }
+
+                    for ( i = 0; i < 8; i++) {
+                      var id = this.brackets[a].owner + this.brackets[a].name + i + '8';
+                      var value = document.getElementById(id).value;
+                      if (this.round3[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+                        document.getElementById(id).style.backgroundColor = '#3498db';
+                      } else if (this.round3[i] === value) {
+                        document.getElementById(id).style.backgroundColor = '#2ecc71';
+                        document.getElementById(id).style.borderColor = '#27ae60';
+                      } else {
+                        document.getElementById(id).style.backgroundColor = '#e74c3c';
+                        document.getElementById(id).style.borderColor = '#c0392b';
+                      }
+
+                      if (this.round3[i] !== '' && this.round3[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+                          eliminatedTeams.push(value);
+                      }
+                    }
+
+                    for ( i = 0; i < 4; i++) {
+                      var id = this.brackets[a].owner + this.brackets[a].name + i + '4';
+                      var value = document.getElementById(id).value;
+                      if (this.round4[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+                        document.getElementById(id).style.backgroundColor = '#3498db';
+                      } else if (this.round4[i] === value) {
+                        document.getElementById(id).style.backgroundColor = '#2ecc71';
+                        document.getElementById(id).style.borderColor = '#27ae60';
+                      } else {
+                        document.getElementById(id).style.backgroundColor = '#e74c3c';
+                        document.getElementById(id).style.borderColor = '#c0392b';
+                      }
+
+                      if (this.round4[i] !== '' && this.round4[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+                          eliminatedTeams.push(value);
+                      }
+                    }
+
+                    for ( i = 0; i < 2; i++) {
+                      var id = this.brackets[a].owner + this.brackets[a].name + i + '2';
+                      var value = document.getElementById(id).value;
+                      if (this.round5[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+                        document.getElementById(id).style.backgroundColor = '#3498db';
+                      } else if (this.round5[i] === value) {
+                        document.getElementById(id).style.backgroundColor = '#2ecc71';
+                        document.getElementById(id).style.borderColor = '#27ae60';
+                      } else {
+                        document.getElementById(id).style.backgroundColor = '#e74c3c';
+                        document.getElementById(id).style.borderColor = '#c0392b';
+                      }
+
+                      if (this.round5[i] !== '' && this.round5[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+                          eliminatedTeams.push(value);
+                      }
+                    }
+
+                    for ( i = 0; i < 1; i++) {
+                      var id = this.brackets[a].owner + this.brackets[a].name + i + '1';
+                      var value = document.getElementById(id).value;
+                      if (this.round6[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+                        document.getElementById(id).style.backgroundColor = '#3498db';
+                      } else if (this.round6[i] === value) {
+                        document.getElementById(id).style.backgroundColor = '#2ecc71';
+                        document.getElementById(id).style.borderColor = '#27ae60';
+                      } else {
+                        document.getElementById(id).style.backgroundColor = '#e74c3c';
+                        document.getElementById(id).style.borderColor = '#c0392b';
+                      }
+
+                      if (this.round6[i] !== '' && this.round6[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+                          eliminatedTeams.push(value);
+                      }
+                    }
+                  }
+                });
+              });
+            });
+          });
+        });
       });
-
-      $http.get('/api/masterbracket?round=2').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 16; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '16';
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
-        }
-      });
-
-      $http.get('/api/masterbracket?round=3').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 8; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '8';
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
-        }
-      });
-
-      $http.get('/api/masterbracket?round=4').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 4; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '4';
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
-        }
-      });
-
-      $http.get('/api/masterbracket?round=5').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 2; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '2';
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
-        }
-      });
-
-      $http.get('/api/masterbracket?round=6').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 1; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '1';
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
-        }
-      });
-
     });
   }
 
   searchChange() {
-    this.$http.get('/api/masterbracket?round=1').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 32; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '32';
-            if (document.getElementById(id) == null) {
-              break;
-            }
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
-        }
-      });
+    for (var a = 0; a < this.brackets.length; a++) {
 
-      this.$http.get('/api/masterbracket?round=2').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 16; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '16';
-            if (document.getElementById(id) == null) {
-              break;
-            }
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
-        }
-      });
+      var eliminatedTeams = [];
+      var i = 0;
 
-      this.$http.get('/api/masterbracket?round=3').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 8; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '8';
-            if (document.getElementById(id) == null) {
-              break;
-            }
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
+      for ( i = 0; i < 32; i++) {
+        var id = this.brackets[a].owner + this.brackets[a].name + i + '32';
+        if (document.getElementById(id) == null) {
+          break;
         }
-      });
+        var value = document.getElementById(id).value;
+        if (this.round1[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+          document.getElementById(id).style.backgroundColor = '#3498db';
+        } else if (this.round1[i] === value) {
+          document.getElementById(id).style.backgroundColor = '#2ecc71';
+          document.getElementById(id).style.borderColor = '#27ae60';
+        } else {
+          document.getElementById(id).style.backgroundColor = '#e74c3c';
+          document.getElementById(id).style.borderColor = '#c0392b';
+        }
 
-      this.$http.get('/api/masterbracket?round=4').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 4; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '4';
-            if (document.getElementById(id) == null) {
-              break;
-            }
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
+        if (this.round1[i] !== '' && this.round1[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+          eliminatedTeams.push(value);
         }
-      });
+      }
 
-      this.$http.get('/api/masterbracket?round=5').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 2; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '2';
-            if (document.getElementById(id) == null) {
-              break;
-            }
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
+      for ( i = 0; i < 16; i++) {
+        var id = this.brackets[a].owner + this.brackets[a].name + i + '16';
+        if (document.getElementById(id) == null) {
+          break;
         }
-      });
+        var value = document.getElementById(id).value;
+        if (this.round2[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+          document.getElementById(id).style.backgroundColor = '#3498db';
+        } else if (this.round2[i] === value) {
+          document.getElementById(id).style.backgroundColor = '#2ecc71';
+          document.getElementById(id).style.borderColor = '#27ae60';
+        } else {
+          document.getElementById(id).style.backgroundColor = '#e74c3c';
+          document.getElementById(id).style.borderColor = '#c0392b';
+        }
 
-      this.$http.get('/api/masterbracket?round=6').then(response => {
-        for (var a = 0; a < this.brackets.length; a++) {
-          for (var i = 0; i < 1; i++) {
-            var id = this.brackets[a].owner + this.brackets[a].name + i + '1';
-            if (document.getElementById(id) == null) {
-              break;
-            }
-            var value = document.getElementById(id).value;
-            if (response.data.toString().split(',')[i] == '') {
-              document.getElementById(id).style.backgroundColor = '#3498db';
-            } else if (response.data.toString().split(',')[i] === value) {
-              document.getElementById(id).style.backgroundColor = '#2ecc71';
-              document.getElementById(id).style.borderColor = '#27ae60';
-            } else {
-              document.getElementById(id).style.backgroundColor = '#e74c3c';
-              document.getElementById(id).style.borderColor = '#c0392b';
-            }
-          }
+        if (this.round2[i] !== '' && this.round2[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+          eliminatedTeams.push(value);
         }
-      });
+      }
+
+      for ( i = 0; i < 8; i++) {
+        var id = this.brackets[a].owner + this.brackets[a].name + i + '8';
+        if (document.getElementById(id) == null) {
+          break;
+        }
+        var value = document.getElementById(id).value;
+        if (this.round3[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+          document.getElementById(id).style.backgroundColor = '#3498db';
+        } else if (this.round3[i] === value) {
+          document.getElementById(id).style.backgroundColor = '#2ecc71';
+          document.getElementById(id).style.borderColor = '#27ae60';
+        } else {
+          document.getElementById(id).style.backgroundColor = '#e74c3c';
+          document.getElementById(id).style.borderColor = '#c0392b';
+        }
+
+        if (this.round3[i] !== '' && this.round3[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+          eliminatedTeams.push(value);
+        }
+      }
+
+      for ( i = 0; i < 4; i++) {
+        var id = this.brackets[a].owner + this.brackets[a].name + i + '4';
+        if (document.getElementById(id) == null) {
+          break;
+        }
+        var value = document.getElementById(id).value;
+        if (this.round4[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+          document.getElementById(id).style.backgroundColor = '#3498db';
+        } else if (this.round4[i] === value) {
+          document.getElementById(id).style.backgroundColor = '#2ecc71';
+          document.getElementById(id).style.borderColor = '#27ae60';
+        } else {
+          document.getElementById(id).style.backgroundColor = '#e74c3c';
+          document.getElementById(id).style.borderColor = '#c0392b';
+        }
+
+        if (this.round4[i] !== '' && this.round4[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+          eliminatedTeams.push(value);
+        }
+      }
+
+      for ( i = 0; i < 2; i++) {
+        var id = this.brackets[a].owner + this.brackets[a].name + i + '2';
+        if (document.getElementById(id) == null) {
+          break;
+        }
+        var value = document.getElementById(id).value;
+        if (this.round5[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+          document.getElementById(id).style.backgroundColor = '#3498db';
+        } else if (this.round5[i] === value) {
+          document.getElementById(id).style.backgroundColor = '#2ecc71';
+          document.getElementById(id).style.borderColor = '#27ae60';
+        } else {
+          document.getElementById(id).style.backgroundColor = '#e74c3c';
+          document.getElementById(id).style.borderColor = '#c0392b';
+        }
+
+        if (this.round5[i] !== '' && this.round5[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+          eliminatedTeams.push(value);
+        }
+      }
+
+      for ( i = 0; i < 1; i++) {
+        var id = this.brackets[a].owner + this.brackets[a].name + i + '1';
+        if (document.getElementById(id) == null) {
+          break;
+        }
+        var value = document.getElementById(id).value;
+        if (this.round6[i] == '' && eliminatedTeams.indexOf(value) < 0) {
+          document.getElementById(id).style.backgroundColor = '#3498db';
+        } else if (this.round6[i] === value) {
+          document.getElementById(id).style.backgroundColor = '#2ecc71';
+          document.getElementById(id).style.borderColor = '#27ae60';
+        } else {
+          document.getElementById(id).style.backgroundColor = '#e74c3c';
+          document.getElementById(id).style.borderColor = '#c0392b';
+        }
+
+        if (this.round6[i] !== '' && this.round6[i] !== value && eliminatedTeams.indexOf(value) < 0) {
+          eliminatedTeams.push(value);
+        }
+      }
+    }
   }
 
   setWidth(score, potential, number) {

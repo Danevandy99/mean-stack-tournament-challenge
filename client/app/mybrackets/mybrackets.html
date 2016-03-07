@@ -1,3 +1,6 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://gist.github.com/btd/2390721.js"></script>
+
 <div class='container'>
 	<h1>My Brackets</h1>
 	<div class='brackets-wrapper' style='background-color: #3498db; border-radius: 5px; padding: 5px;'>
@@ -41,7 +44,6 @@
 		<button class="fa fa-chevron-down" style='float: right; border-radius: 5px; font-size: 12pt; padding: 5px; padding-right: 10px; padding-left: 10px; margin-top: -3px; border: none; background-color: #2980b9; color: white; margin-left: 5px;' ng-click='mybrackets.toggleBracket($event, $index)'></button>
 		<button class="fa fa-trash-o" ng-show='mybrackets.isPoolOpen' style='float: right; border-radius: 5px; font-size: 12pt; padding: 5px; padding-right: 10px; padding-left: 10px; margin-top: -3px; border: none; background-color: #e74c3c; color: white;' ng-click='mybrackets.deleteBracket($index)'></button>
 		<div class='bracket-panel' id='{{"bracket-panel" + $index}}' style='background-color: white; border-radius: 5px; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; display: none; padding-left: 2px;'>
-			
 			<div class='floating-div-master floating-div' style='margin-top: 280px;'>
 				<div ng-repeat="number in mybrackets.range(1)" class='one' style='margin-bottom: 5px'>
 					<input type='submit' sglclick='mybrackets.advanceTeam($event, mybrackets.isAdmin())' ng-blur='mybrackets.changeToButton($event, mybrackets.isAdmin())' class='bracket-space form-control top' id='{{bracket.name + number + "1"}}' ng-dblclick='mybrackets.resetSpace($event, mybrackets.isAdmin())'  value="{{bracket.bracket[6][number]}}" style='pointer-events: none;'></input>
@@ -160,6 +162,9 @@
 	</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+</script>
 
 <div class='container'>
 	<div style='margin-left: -15px; margin-top: 20px; border-radius: 5px; margin-right: 14px;' ng-show='mybrackets.brackets.length < 1' class='bracket-row'>
