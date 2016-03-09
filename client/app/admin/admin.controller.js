@@ -20,6 +20,12 @@ class AdminController {
     this.round4 = [];
     this.round5 = [];
     this.round6 = [];
+
+    this.textarea = '';
+  }
+
+  saveArticle() {
+    console.log(tinyMCE.get('mytextarea').getContent());
   }
 
   setSearch() {
