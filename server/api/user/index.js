@@ -14,5 +14,6 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 router.post('/addbracket', auth.isAuthenticated(), controller.addBracket);
 router.post('/deletebracket', auth.isAuthenticated(), controller.deleteBracket);
+router.post('/updatebracket', auth.isAuthenticated(), controller.updateBracket);
 
 export default router;

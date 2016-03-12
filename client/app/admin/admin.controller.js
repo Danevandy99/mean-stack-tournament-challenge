@@ -25,12 +25,32 @@ class AdminController {
   }
 
   delete(user) {
-    user.$remove();
-    this.users.splice(this.users.indexOf(user), 1);
+    if (confirm('Are you sure you want to delete this user?')) {
+      user.$remove();
+      this.users.splice(this.users.indexOf(user), 1);
+    }
   }
 
   saveArticle() {
     console.log(tinyMCE.get('mytextarea').getContent());
+  }
+
+  activateBracket(user, bracket, index) {
+    var object= {};
+    object.email = user.email;
+    object.index = index;
+    this.users[this.users.indexOf(user)].brackets[this.users[this.users.indexOf(user)].brackets.indexOf(bracket)].bracket_active = true;
+    object.bracket = this.users[this.users.indexOf(user)].brackets[this.users[this.users.indexOf(user)].brackets.indexOf(bracket)];
+    this.$http.post('/api/users/updatebracket', object);
+  }
+
+  deactivateBracket(user, bracket, index) {
+    var object= {};
+    object.email = user.email;
+    object.index = index;
+    this.users[this.users.indexOf(user)].brackets[this.users[this.users.indexOf(user)].brackets.indexOf(bracket)].bracket_active = false;
+    object.bracket = this.users[this.users.indexOf(user)].brackets[this.users[this.users.indexOf(user)].brackets.indexOf(bracket)];
+    this.$http.post('/api/users/updatebracket', object);
   }
 
   setSearch() {
@@ -170,11 +190,11 @@ class AdminController {
                       }
                     }
                   });
-});
-});
-});
-});
-});
+                });
+              });
+            });
+          });
+        });
       }
     });
   }

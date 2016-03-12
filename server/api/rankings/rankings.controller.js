@@ -61,7 +61,7 @@ function handleError(res, statusCode) {
 }
 
 export function getRankings(req, res) {
-  Bracket.find({}).sort('-score').exec(function(err, rankings) { 
+  Bracket.find({bracket_active: true}).sort('-score').exec(function(err, rankings) { 
     if (err) {
       throw err;
     }

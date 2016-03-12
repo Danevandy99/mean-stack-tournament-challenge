@@ -47,6 +47,23 @@ export function addBracket(req, res, next) {
     })
     .catch(err => next(err));
 }
+
+export function updateBracket(req, res, next) {
+  var email = req.body.email;
+  var bracket = req.body.bracket;
+  User.findOneAsync({email: email })
+    .then(user => {
+      if (!user) {
+        return res.status(401).end();
+      }
+      var index = req.body.index;
+      user.brackets.splice(index, 1, bracket);
+      user.save();
+      res.status(200).json('Success');
+    })
+    .catch(err => next(err));
+}
+
 /**
  * Get list of users
  * restriction: 'admin'

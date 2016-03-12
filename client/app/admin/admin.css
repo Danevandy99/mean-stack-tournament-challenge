@@ -19,6 +19,21 @@
   outline: none;
 }
 
+.list-group {
+  border: none;
+}
+
+.list-group-item {
+  background-color: #3498db;
+  color: white;
+  border: none;
+}
+
+.bracket-info p {
+  display: inline-block;
+  text-align: center;
+}
+
 iframe {
   height: 64.5vh;
   font-size: 10pt;
@@ -30,12 +45,24 @@ iframe {
   border-radius: 5px;
 }
 
-.trash { color:rgb(209, 91, 71); }
+.trash { 
+  color: #fff;
+  background-color: #e74c3c;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin: auto;
+  font-size: 8pt;
+}
+
+.trash:hover {
+  color: white;
+}
 
 .user-list li {
 	display: flex;
 	border: none;
-	border-bottom: 1px lightgray solid;
+	border-bottom: 1px #2980b9 solid;
 	margin-bottom: 0;
 }
 .user-list li:last-child {

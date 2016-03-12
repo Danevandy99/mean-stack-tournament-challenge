@@ -33,8 +33,22 @@
                     <strong>{{user.email}}</strong>
                     </br>
                     <span>Number of brackets: {{user.brackets.length}}</span>
+                    </br>
+                    <div class='bracket-info' style='display: block; border-top: 1px solid #2980b9; padding: 5px; margin: 5px;' ng-repeat='bracket in user.brackets'>
+                      <p style='width: 175px;'>Name: {{bracket.name}}</p>
+                      <p>|</p>
+                      <p style='width: 175px;'>Champ: {{bracket.pickedChampion[0]}}</p>
+                      <p>|</p>
+                      <p style='width: 175px;'>Payer: {{bracket.payer_id}}</p>
+                      <p>|</p>
+                      <p style='width: 190px;'>Payment Status: {{bracket.payment_status}}</p>
+                      <p>|</p>
+                      <p style='width: 225px;'>Transaction: {{bracket.txn_id}}</p>
+                      <button ng-show='bracket.bracket_active' ng-click='admin.deactivateBracket(user, bracket, $index)' style='float: right' class='btn btn-login'>Active</button>
+                      <button ng-show='!bracket.bracket_active' ng-click='admin.activateBracket(user, bracket, $index)' style='float: right' class='btn btn-login'>Inactive</button>
+                    </div>
                   </div>
-                  <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+                  <a href='#' ng-click="admin.delete(user)" class="trash" style='margin-left: 20px;'><span class="fa fa-trash fa-2x"></span></a>
                 </li>
             </ul>
           </div>
