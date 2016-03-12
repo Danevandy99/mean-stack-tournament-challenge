@@ -24,6 +24,11 @@ class AdminController {
     this.textarea = '';
   }
 
+  delete(user) {
+    user.$remove();
+    this.users.splice(this.users.indexOf(user), 1);
+  }
+
   saveArticle() {
     console.log(tinyMCE.get('mytextarea').getContent());
   }

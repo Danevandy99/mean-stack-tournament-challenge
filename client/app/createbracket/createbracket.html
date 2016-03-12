@@ -191,7 +191,7 @@
 	}
 
 	var urlVars = getUrlVars();
-	if (urlVars.payment_status === 'Completed' && urlVars.payer_id !== undefined) {
+	if (urlVars.payment_status === 'Completed' && urlVars.payer_id !== undefined && urlVars.txn_id != undefined) {
 		$('#0').css('display', 'none');
 		$('#1').css('display', 'block');
 	}

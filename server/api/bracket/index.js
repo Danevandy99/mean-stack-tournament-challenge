@@ -13,7 +13,7 @@ router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 router.post('/create_success', function(req, res) {
 	console.log(req.body);
-	res.redirect('http://' + req.headers.host + '/createbracket?payment_status=' + req.body.payment_status + '&payer_id=' + req.body.payer_id);
-})
+	res.redirect('http://' + req.headers.host + '/createbracket?payment_status=' + req.body.payment_status + '&payer_id=' + req.body.payer_id + '&txn_id=' + req.body.txn_id);
+});
 
 module.exports = router;

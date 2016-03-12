@@ -35,6 +35,18 @@
 			});
 		}
 
+		getUrlVars() {
+			var vars = [], hash;
+			var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			for(var i = 0; i < hashes.length; i++)
+			{
+				hash = hashes[i].split('=');
+				vars.push(hash[0]);
+				vars[hash[0]] = hash[1];
+			}
+			return vars;
+		}
+
 		checkName(user) {
 			document.getElementById('help-block1').style.display = 'none';
 			for (var i = 0; i < user.brackets.length; i++) {
@@ -161,6 +173,7 @@
 				}
 
 				if (bracketFilled && tieBreakerNotZero) {
+					var urlVars = getUrlVars();
 					var entryObject = {};
 					entryObject.name = document.getElementById('bracket-name').value + ' ' + document.getElementById('bracket-name2').value;
 					entryObject.score = 0;
@@ -170,6 +183,10 @@
 					entryObject.tieBreaker = document.getElementById('tiebreaker-number').value;
 					entryObject.owner = user.email;
 					entryObject.bracket = bracketArray;
+					entryObject.payment_status = urlVars.payment_status;
+					entryObject.payer_id = urlVars.payer_id;
+					entryObject.bracket_active = true;
+					entryObject.txn_id = urlVars.txn_id;
 					this.$http.post('/api/users/addbracket', entryObject).success(function(data, status) {
 						document.getElementById('2').style.display = 'none';
 						document.getElementById('finish').style.display = 'block';

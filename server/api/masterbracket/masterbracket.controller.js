@@ -74,10 +74,20 @@ export function index(req, res) {
   var query = url_parts.query;
   Masterbracket.findAsync()
     .then(bracket => {
-      if (query.round == null) {
-        res.json(bracket[0].bracket);
-      } else  {
-        res.json(bracket[0].bracket[query.round]);
+      console.log(bracket.length);
+      if (bracket.length < 1) {
+        var tmpbracket = [['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''],['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''],['','','','','','','','','','','','','','','',''],['','','','','','','',''],['','','',''],['',''],['']];
+        if (query.round == null) {
+          res.json(tmpbracket);
+        } else  {
+          res.json(tmpbracket[query.round]);
+        }        
+      } else {
+        if (query.round == null) {
+          res.json(bracket[0].bracket);
+        } else  {
+          res.json(bracket[0].bracket[query.round]);
+        }
       }
     })
     .catch(handleError(res));
@@ -341,6 +351,10 @@ export function create(req, res) {
         newRankings.bracket = bracket.bracket;
         newRankings.rank = 0;
         newRankings.mover_loser = 0;
+        newRankings.payment_status = bracket.payment_status || 'Incomplete';
+        newRankings.payer_id = bracket.payer_id || 'NO_ID';
+        newRankings.bracket_active = bracket.bracket_active || false;
+        newRankings.txn_id = bracket.txn_id || 'NO_TXN_ID'
         newRankings.saveAsync();
       }
     }
