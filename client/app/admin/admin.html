@@ -9,9 +9,6 @@
                     <a class='sidebar-link' ng-click='admin.activate($event)' id='news2' href="#"><i class="fa fa-newspaper-o"></i> News</a>
                 </li>
                 <li>
-                    <a class='sidebar-link' ng-click='admin.activate($event)' id='editor2' href="#"><i class="fa fa-pencil-square"></i> Editor</a>
-                </li>
-                <li>
                     <a class='sidebar-link' id='search2' ng-click='admin.activate($event); admin.setSearch()' href="#"><i class="fa fa-search"></i> Search</a>
                 </li>
                 <li>
@@ -88,11 +85,14 @@
             <button class='btn btn-primary save-changes fa fa-floppy-o' ng-click='admin.saveChanges()'> Save Changes</button>
           </div>
 
-          <div class='space' id='editor' style='display: none;'>
-            <h1>News Editor</h1>
+          <div class='space' id='news' style='display: none;'>
+            <h1>News</h1>
             <div class='container' style='margin-left: -15px;'>
-              <textarea  id="mytextarea"></textarea>
-              <button class='btn btn-primary fa fa-floppy-o' style='margin-top: 30px; color: white;' ng-click='admin.saveArticle()'> Save</button>
+            <h4>Email Subject</h4>
+            <input class='form-control' id='subject' style='margin-bottom: 20px;'></input>
+            <h4>Email Body</h4>
+            <textarea  id="mytextarea"></textarea>
+            <button class='btn btn-primary fa fa-floppy-o' style='margin-top: 30px; color: white;' ng-click='admin.saveArticle()'> Send Email</button>
             </div>
           </div>
 
@@ -307,9 +307,9 @@
       } else if (e.target.id === 'search2') {
         $('.space').css('display', 'none');
         $('#search').css('display', 'block');
-      } else if (e.target.id === 'editor2') {
+      } else if (e.target.id === 'news2') {
         $('.space').css('display', 'none');
-        $('#editor').css('display', 'block');
+        $('#news').css('display', 'block');
       }
     });
 

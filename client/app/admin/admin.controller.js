@@ -22,6 +22,8 @@ class AdminController {
     this.round6 = [];
 
     this.textarea = '';
+
+    this.emails = [];
   }
 
   delete(user) {
@@ -32,7 +34,15 @@ class AdminController {
   }
 
   saveArticle() {
-    console.log(tinyMCE.get('mytextarea').getContent());
+    for (var i = 0; i < this.users.length; i++) {
+      console.log(this.users.length);
+      this.emails.push(this.users[i].email);
+    }
+    console.log(this.emails.toString());
+    var object = { html: tinyMCE.get('mytextarea').getContent().toString(), subject: document.getElementById('subject').value, to: this.emails.toString() };
+    this.$http.post('/api/news/sendemail', object).success(function(data, status) {
+      console.log('Email sent!');     
+    });
   }
 
   activateBracket(user, bracket, index) {

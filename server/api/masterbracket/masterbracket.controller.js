@@ -354,7 +354,7 @@ export function create(req, res) {
         newRankings.payment_status = bracket.payment_status || 'Incomplete';
         newRankings.payer_id = bracket.payer_id || 'NO_ID';
         newRankings.bracket_active = bracket.bracket_active || false;
-        newRankings.txn_id = bracket.txn_id || 'NO_TXN_ID'
+        newRankings.txn_id = bracket.txn_id || 'NO_TXN_ID';
         newRankings.saveAsync();
       }
     }
