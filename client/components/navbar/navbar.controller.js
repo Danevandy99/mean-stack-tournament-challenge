@@ -10,11 +10,26 @@ class NavbarController {
   isCollapsed = true;
   //end-non-standard
 
-  constructor($location, Auth) {
+  constructor($location, Auth, $http) {
     this.$location = $location;
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
+
+    this.$http = $http;
+
+    this.$http.get('/api/settings/').then(response => {
+      this.poolOpens = Date.parse(response.data[0].poolOpens);
+      this.poolCloses = Date.parse(response.data[0].poolCloses);
+      console.log(new Date(this.poolOpens).getTime());
+      console.log(new Date(this.poolCloses).getTime());
+      console.log(Math.floor(Date.now()));
+      if (Math.floor(Date.now()) > new Date(this.poolOpens).getTime() && Math.floor(Date.now()) < new Date(this.poolCloses).getTime()) {
+        this.isPoolOpen = true;
+      } else {
+        this.isPoolOpen = false;
+      }
+    });
   }
 
   isActive(route) {

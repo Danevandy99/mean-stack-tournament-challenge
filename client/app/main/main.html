@@ -2,7 +2,8 @@
   <div class="container">
       <h1 style='z-index: 2; margin-top: 50px'>Vanderbilt Tournament Challenge</h1>
     <img src="http://clipartion.com/wp-content/uploads/2015/10/basketball-knights-clipart.png" style='opacity: 0.9; z-index: 1; height: 100px; display: block; margin: auto; text-align: center;' alt="Tourney Challenge">
-    <a href='/signup' class='btn btn-large'>Sign Up</a>
+    <a href='/signup' class='btn btn-large' ng-show='!main.isLoggedIn'>Sign Up</a>
+    <a href='/createbracket' class='btn btn-large' ng-show='main.isLoggedIn && main.isPoolOpen'><i class="fa fa-plus"></i> Create a Bracket</a>
   </div>
 </header>
 

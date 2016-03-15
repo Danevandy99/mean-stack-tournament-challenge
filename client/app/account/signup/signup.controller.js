@@ -31,7 +31,7 @@ class SignupController {
         this.$http.post('/api/news/sendemail', object).success(function(data, status) {
           console.log('Email sent!');     
         });
-        this.$location.path('/');
+        this.$location.path('/mybrackets');
       })
       .catch(err => {
         err = err.data;

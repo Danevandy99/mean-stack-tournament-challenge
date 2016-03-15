@@ -13,6 +13,7 @@
         <li ng-repeat="item in nav.menu" ng-class="{active: nav.isActive(item.link)}">
             <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
+        <li ng-show="nav.isLoggedIn() && nav.isPoolOpen" ng-class="{active: nav.isActive('/createbracket')}"><a href="/createbracket"><i class="fa fa-plus"></i> Create a Bracket</a></li>
         <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/mybrackets')}"><a href="/mybrackets">My Brackets</a></li>
         <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/masterbracket')}"><a href="/masterbracket">Live Bracket</a></li>
         <li ng-show="nav.isLoggedIn()" ng-class="{active: nav.isActive('/rankings')}"><a href="/rankings">Rankings</a></li>
