@@ -1,41 +1,6 @@
 <div class='container' style='padding-top: 5px' ng-show='createbracket.isPoolOpen'>
-	<div class='mypanel zero' id='0'>
-		<h3>Pay Your $10 Entry Fee Through Paypal</h3>
-		</br>
-		<form method="post" action="https://www.paypal.com/cgi-bin/webscr" style='margin: auto; text-align: center;'>
-			<input type="hidden" name="rm" value="2" id="PayPalRm" />
-			<input type="hidden" name="cmd" value="_xclick" id="PayPalCmd" />
-			<input type="hidden" name="business" value="danevandy@hotmail.com" id="PayPalBusiness" /> 
-			<input type="hidden" name="return" value="{{createbracket.baseUrl + '/api/brackets/create_success'}}" id="PayPalReturn" />
-			<input type="hidden" name="cancel_return" value="{{createbracket.baseUrl + '/mybrackets'}}" id="PayPalCancelReturn" />
-			<input type="hidden" name="item_name" value="Entry Fee" id="PayPalItemName" />
-			<input type="hidden" name="quantity" value="1" id="PayPalQuantity" />
-			<input type="hidden" name="lc" value="US" id="PayPalLc" />
-			<input type="hidden" name="country" value="US" id="PayPalCountry" />
-			<input type="hidden" name="bn" value="PP-BuyNowBF" id="PayPalBn" />
-			<input type="hidden" name="amount" value="10" id="PayPalAmount" />
-			<div class="submit"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"></div></form>
-			</br>
-			<h4 style='text-align: center;'><strong>Important Note!</strong> </br> </br> When you finish the payment process, use the link provided by Paypal to return this website and fill out your bracket. If it prompts you to send a form, press the send button.</h4>
-		<form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr" style='margin: auto; text-align: center;' ng-show='createbracket.isAdmin()'>
-			<input type="hidden" name="rm" value="2" id="PayPalRm" />
-			<input type="hidden" name="cmd" value="_xclick" id="PayPalCmd" />
-			<input type="hidden" name="business" value="{{createbracket.business}}" id="PayPalBusiness" /> 
-			<input type="hidden" name="return" value="{{createbracket.baseUrl + '/api/brackets/create_success'}}" id="PayPalReturn" />
-			<input type="hidden" name="cancel_return" value="{{createbracket.baseUrl + '/mybrackets'}}" id="PayPalCancelReturn" />
-			<input type="hidden" name="item_name" value="Entry Fee" id="PayPalItemName" />
-			<input type="hidden" name="quantity" value="1" id="PayPalQuantity" />
-			<input type="hidden" name="lc" value="US" id="PayPalLc" />
-			<input type="hidden" name="country" value="US" id="PayPalCountry" />
-			<input type="hidden" name="bn" value="PP-BuyNowBF" id="PayPalBn" />
-			<input type="hidden" name="amount" value="10" id="PayPalAmount" />
-			<div class="submit"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"></div></form>
-		<div class='center-nav'>
-			<a href='/mybrackets' class='btn btn-primary back' style='margin-top: 20px;'><i class="fa fa-arrow-left"></i> Back</a>
-		</div>
-	</div>
 
-	<div class='mypanel one' id='1' style='display: none;'>
+	<div class='mypanel one' id='1' style=''>
 		<h3>Enter a name for your bracket</h3>
 		<h4 style='margin: auto; text-align: center;'>First</h4>
 		<input type='text' id='bracket-name' class='form-control has-error' ng-model='value' ng-change='createbracket.checkName(createbracket.getCurrentUser())'/>
@@ -174,25 +139,33 @@
 
 <div class='mypanel three finish' id='finish' style='display: none;'>
 		<h1 style='margin: auto; text-align: center; margin-bottom: 50px; margin-top: 30px; display: block;'>Successfully Saved!</h1>
-		<a href='/mybrackets' class='btn btn-primary' style='margin: auto; text-align: center; display: block;'>Return to Your Brackets</a>
+		<h3>Pay Your $10 Entry Fee Through Paypal To Activate Your Bracket</h3>
+		<p>(Your bracket will be inactive and will not show up on the rankings until your entry fee is paid through Paypal)</p>
+		</br>
+		<form method="post" action="https://www.paypal.com/cgi-bin/webscr" style='margin: auto; text-align: center;' target='Paypal'>
+			<input type="hidden" name="rm" value="2" id="PayPalRm" />
+			<input type="hidden" name="cmd" value="_xclick" id="PayPalCmd" />
+			<input type="hidden" name="business" value="danevandy@hotmail.com" id="PayPalBusiness" /> 
+			<input type="hidden" name="cancel_return" value="{{createbracket.baseUrl + '/mybrackets'}}" id="PayPalCancelReturn" />
+			<input type="hidden" name="item_name" value="Entry Fee" id="PayPalItemName" />
+			<input type="hidden" name="quantity" value="1" id="PayPalQuantity" />
+			<input type="hidden" name="lc" value="US" id="PayPalLc" />
+			<input type="hidden" name="country" value="US" id="PayPalCountry" />
+			<input type="hidden" name="bn" value="PP-BuyNowBF" id="PayPalBn" />
+			<input type="hidden" name="amount" value="10" id="PayPalAmount" />
+			<div class="submit"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"></div></form>
+			</br>
+		<form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr" style='margin: auto; text-align: center;' ng-show='createbracket.isAdmin()' target='Paypal'>
+			<input type="hidden" name="rm" value="2" id="PayPalRm" />
+			<input type="hidden" name="cmd" value="_xclick" id="PayPalCmd" />
+			<input type="hidden" name="business" value="{{createbracket.business}}" id="PayPalBusiness" /> 
+			<input type="hidden" name="cancel_return" value="{{createbracket.baseUrl + '/mybrackets'}}" id="PayPalCancelReturn" />
+			<input type="hidden" name="item_name" value="Entry Fee" id="PayPalItemName" />
+			<input type="hidden" name="quantity" value="1" id="PayPalQuantity" />
+			<input type="hidden" name="lc" value="US" id="PayPalLc" />
+			<input type="hidden" name="country" value="US" id="PayPalCountry" />
+			<input type="hidden" name="bn" value="PP-BuyNowBF" id="PayPalBn" />
+			<input type="hidden" name="amount" value="10" id="PayPalAmount" />
+			<div class="submit"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"></div></form>
+		<a href='/mybrackets' class='btn btn-primary' style='margin: auto; text-align: center; display: block; width: 200px;'>Return to Your Brackets</a>
 	</div>
-
-<script>
-	function getUrlVars() {
-		var vars = [], hash;
-		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-		for(var i = 0; i < hashes.length; i++)
-		{
-			hash = hashes[i].split('=');
-			vars.push(hash[0]);
-			vars[hash[0]] = hash[1];
-		}
-		return vars;
-	}
-
-	var urlVars = getUrlVars();
-	if (urlVars.payment_status === 'Completed' && urlVars.payer_id !== undefined && urlVars.txn_id != undefined) {
-		$('#0').css('display', 'none');
-		$('#1').css('display', 'block');
-	}
-</script>

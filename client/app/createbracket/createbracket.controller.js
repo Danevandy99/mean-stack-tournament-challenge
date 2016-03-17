@@ -173,7 +173,6 @@
 				}
 
 				if (bracketFilled && tieBreakerNotZero) {
-					var urlVars = getUrlVars();
 					var entryObject = {};
 					entryObject.name = document.getElementById('bracket-name').value + ' ' + document.getElementById('bracket-name2').value;
 					entryObject.score = 0;
@@ -183,15 +182,12 @@
 					entryObject.tieBreaker = document.getElementById('tiebreaker-number').value;
 					entryObject.owner = user.email;
 					entryObject.bracket = bracketArray;
-					entryObject.payment_status = urlVars.payment_status;
-					entryObject.payer_id = urlVars.payer_id;
-					entryObject.bracket_active = true;
-					entryObject.txn_id = urlVars.txn_id;
+					entryObject.bracket_active = false;
 					this.$http.post('/api/users/addbracket', entryObject).success(function(data, status) {
 						document.getElementById('2').style.display = 'none';
 						document.getElementById('finish').style.display = 'block';
 					}).error(function(data, status) {
-						alert(JSON.stringify(data));
+						console.log(JSON.stringify(data));
 					});
 				}
 			} else if (id === 1) {
