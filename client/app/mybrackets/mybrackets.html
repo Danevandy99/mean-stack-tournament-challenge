@@ -5,7 +5,7 @@
 	<h1>My Brackets</h1>
 	<div class='brackets-wrapper' style='background-color: #3498db; border-radius: 5px; padding: 5px;'>
 		<div class='desc-header' style='padding: 10px; padding-top: 7px; padding-bottom: 7px;'>
-			<p style='width: 150px; text-align: center;'>Name</p>
+			<p style='width: 175px; text-align: center;'>Name</p>
 			<p style='color: #2980b9'>|</p>
 			<p style='width: 90px; text-align: center;'>Total Points</p>
 			<p style='color: #2980b9'>|</p>
@@ -17,14 +17,14 @@
 			<p style='color: #2980b9'>|</p>
 			<p style='width: 80px; text-align: center;'>Pick Pct</p>
 			<p style='color: #2980b9'>|</p>
-			<p style='width: 175px; text-align: center;'>Champion</p>
+			<p style='width: 125px; text-align: center;'>Champion</p>
 			<p style='color: #2980b9'>|</p>
 			<p style='width: 90px; text-align: center;'>Tie Breaker</p>
 			<p style='color: #2980b9'>|</p>
 		</div>
 
 		<div ng-repeat='bracket in mybrackets.brackets' class='bracket-row'>
-		<p style='width: 150px;'>{{bracket.name}}</p>
+		<p style='width: 175px;'>{{bracket.name}}</p>
 		<p style='color: #2980b9'>|</p>
 		<p style='width: 90px;'>{{bracket.score}}</p>
 		<p style='color: #2980b9'>|</p>
@@ -37,12 +37,14 @@
 		<p style='color: #2980b9'>|</p>
 		<p style='width: 80px;'>{{bracket.pickPercentage}}%</p>
 		<p style='color: #2980b9'>|</p>
-		<p style='width: 175px;'>{{bracket.pickedChampion[0].slice(2, bracket.pickedChampion[0].length)}}</p>
+		<p style='width: 125px;'>{{bracket.pickedChampion[0].slice(2, bracket.pickedChampion[0].length)}}</p>
 		<p style='color: #2980b9'>|</p>
 		<p style='width: 90px;'>{{bracket.tieBreaker}}</p>
 		<p style='color: #2980b9'>|</p>
 		<button class="fa fa-chevron-down" style='float: right; border-radius: 5px; font-size: 12pt; padding: 5px; padding-right: 10px; padding-left: 10px; margin-top: -3px; border: none; background-color: #2980b9; color: white; margin-left: 5px;' ng-click='mybrackets.toggleBracket($event, $index)'></button>
 		<button class="fa fa-trash-o" ng-show='mybrackets.isPoolOpen' style='float: right; border-radius: 5px; font-size: 12pt; padding: 5px; padding-right: 10px; padding-left: 10px; margin-top: -3px; border: none; background-color: #e74c3c; color: white;' ng-click='mybrackets.deleteBracket($index)'></button>
+		<a class="fa fa-print" style='float: right; border-radius: 5px; font-size: 12pt; padding: 5px; padding-right: 10px; padding-left: 10px; margin-top: -3px; border: none; background-color: #2980b9; color: white;' href='printbracket?number={{$index}}' target='_blank'/>
+
 		<div class='bracket-panel' id='{{"bracket-panel" + $index}}' style='background-color: white; border-radius: 5px; padding-top: 5px; padding-bottom: 5px; margin-top: 15px; display: none; padding-left: 2px;'>
 			<div class='floating-div-master floating-div' style='margin-top: 280px;'>
 				<div ng-repeat="number in mybrackets.range(1)" class='one' style='margin-bottom: 5px'>
