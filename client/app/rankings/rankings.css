@@ -229,6 +229,22 @@ h1 {
     width: 14.375%;
     margin-right: -25px
   }
+
+  .fa-chevron-down {
+    display: none;
+  }
+
+  .fa-print {
+    display: none;
+  }
+
+  #total_points {
+    display: inline-block;
+  }
+
+  #possible_points {
+    display: none;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -239,9 +255,26 @@ h1 {
     margin-right: -25px;
   }
 
-.row-xs-flex-center {
-  display:flex;
-  align-items:center;
+  .row-xs-flex-center {
+    display:flex;
+    align-items:center;
+  }
+
+  .fa-chevron-down {
+    display: inline-block;
+  }
+
+  .fa-print {
+    display: inline-block;
+  }
+
+  #total_points {
+    display: inline-block;
+  }
+
+  #possible_points {
+    display: inline-block;
+  }
 }
 
 @media ( min-width:768px ) {
