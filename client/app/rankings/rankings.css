@@ -1,6 +1,7 @@
 h1 {
 	margin-bottom: 25px;
   display: inline-block;
+  width: 65%;
 }
 
 .search-box {
@@ -10,14 +11,12 @@ h1 {
   box-shadow: none;
   padding-left: 15px;
   cursor: text;
-  width: 300px;
   border-radius: 5px;
   background: #3498db;
   color: #fff;
-  margin-left: 37%;
   margin-top: 20px;
   height: 40px;
-  float: right;
+  width: 34.4%;
 }
 
 ::-webkit-input-placeholder {
@@ -214,20 +213,56 @@ h1 {
   margin-top: 366px;
 }
 
+.fa-chevron-down {
+    display: none;
+  }
+
+  .fa-print {
+    display: none;
+  }
+
+  #total_points {
+    display: inline-block;
+  }
+
+  #possible_points {
+    display: none;
+  }
+
+  #champion {
+    display: none;
+  }
+
+  #tiebreaker {
+    display: none;
+  }
+
+  #gauge {
+    visibility: hidden;
+  }
+
+  #pick_percentage {
+    visibility: hidden;
+  }
+
 @media (min-width: 768px) {
   .seven-cols-mybracket .col-md-1,
   .seven-cols-mybracket .col-sm-1,
   .seven-cols-mybracket .col-lg-1  {
     width: 100%;
   }
-}
 
-@media (min-width: 992px) {
-  .seven-cols-mybracket .col-md-1,
-  .seven-cols-mybracket .col-sm-1,
-  .seven-cols-mybracket .col-lg-1 {
-    width: 14.375%;
-    margin-right: -25px
+  .row-sm-flex-center {
+    display:flex;
+    align-items:center; 
+  }
+
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    align-self: stretch;    
+    justify-content: space-around;
   }
 
   .fa-chevron-down {
@@ -245,6 +280,68 @@ h1 {
   #possible_points {
     display: none;
   }
+
+  #champion {
+    display: none;
+  }
+
+  #tiebreaker {
+    display: none;
+  }
+
+    #gauge {
+    visibility: visible;
+  }
+
+  #pick_percentage {
+    visibility: visible;
+  }
+}
+
+@media (min-width: 992px) {
+  .seven-cols-mybracket .col-md-1,
+  .seven-cols-mybracket .col-sm-1,
+  .seven-cols-mybracket .col-lg-1 {
+    width: 14.375%;
+    margin-right: -25px
+  }
+
+  .row-md-flex-center {
+    display:flex;
+    align-items:center;
+  }
+
+  .fa-chevron-down {
+    display: none;
+  }
+
+  .fa-print {
+    display: none;
+  }
+
+  #total_points {
+    display: inline-block;
+  }
+
+  #possible_points {
+    display: none;
+  }
+
+  #champion {
+    display: inline-block;
+  }
+
+  #tiebreaker {
+    display: inline-block;
+  }
+
+    #gauge {
+    visibility: visible;
+  }
+
+  #pick_percentage {
+    visibility: visible;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -253,6 +350,11 @@ h1 {
   .seven-cols-mybracket .col-lg-1 {
     width: 14.375%;
     margin-right: -25px;
+  }
+
+  .row-lg-flex-center {
+    display:flex;
+    align-items:center;
   }
 
   .row-xs-flex-center {
@@ -275,30 +377,20 @@ h1 {
   #possible_points {
     display: inline-block;
   }
-}
 
-@media ( min-width:768px ) {
- .row-sm-flex-center {
-    display:flex;
-    align-items:center; 
+  #champion {
+    display: inline-block;
   }
 
-  .image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    align-self: stretch;    
-    justify-content: space-around;
+  #tiebreaker {
+    display: inline-block;
+  }
+
+    #gauge {
+    visibility: visible;
+  }
+
+  #pick_percentage {
+    visibility: visible;
   }
 }
-@media ( min-width: 992px ) {
-  .row-md-flex-center {
-    display:flex;
-    align-items:center;
-  }
-}
-@media ( min-width: 1200px ) {
-  .row-lg-flex-center {
-    display:flex;
-    align-items:center;
-  }
