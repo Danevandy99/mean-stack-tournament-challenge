@@ -1,4 +1,4 @@
-# tournament-challenge
+# Mean Stack Tournament Challenge Software
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0.
 
@@ -20,11 +20,8 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 3. Run `mongod` in a separate shell to keep an instance of the MongoDB Daemon running
 
-4. Run `grunt serve` to start the development server. It should automatically open the client in your browser when ready.
+4. Run `ADMIN_PASSWORD=your-admin-password PORT=port-number MG_API_KEY=your-mailgun-api-key grunt serve` to start the development server. It should automatically open the client in your browser when ready.
 
-## Build & development
-
-Run `grunt build` for building and `grunt serve` for preview.
 
 ## Testing
 
