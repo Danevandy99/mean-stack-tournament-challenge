@@ -61,10 +61,11 @@ function handleError(res, statusCode) {
 }
 
 export function getRankings(req, res) {
-  Bracket.find({bracket_active: true}).sort('-score').exec(function(err, rankings) { 
+  Bracket.find({bracket_active: true}).sort('-score').limit(50).exec(function(err, rankings) { 
     if (err) {
       throw err;
     }
+    var minimum = 192;
     var lastRank = 0;
     var lastScore = 0;
     for (var i = 0; i < rankings.length; i++) {
@@ -76,7 +77,11 @@ export function getRankings(req, res) {
         lastRank = i + 1;
         rankings[i].rank = i + 1;
       }
+      if (score < minimum) {
+        minimum = score;
+      }
     }
+
     res.status(200).json(rankings);
   });
 }

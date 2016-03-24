@@ -1,10 +1,10 @@
 'use strict';
 
 class SettingsController {
-  constructor(Auth) {
+  constructor(Auth, $http) {
     this.errors = {};
     this.submitted = false;
-
+    this.$http = $http;
     this.Auth = Auth;
   }
 
@@ -22,6 +22,12 @@ class SettingsController {
           this.message = '';
         });
     }
+  }
+
+  generate() {
+    this.$http.get('/api/users/generate').then(response => {
+      console.log(JSON.stringify(response));
+    })
   }
 }
 

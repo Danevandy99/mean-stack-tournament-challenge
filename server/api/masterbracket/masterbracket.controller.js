@@ -139,6 +139,13 @@ export function create(req, res) {
         }   
         var teamsSubtracted = [];
         bracket.potentialPoints = 192;
+        if (bracket.bracket[0][5] == '12 San Diego St.') {
+          bracket.bracket[0][5] = '12 South Dakota St.';
+        }
+
+        if (bracket.bracket[1][2] == '12 San Diego St.') {
+          bracket.bracket[1][2] = '12 South Dakota St.';
+        }
         for (var c = 0; c < 32; c++) {
           if (createBracket.bracket[1][c] == '') {
             score += 0;

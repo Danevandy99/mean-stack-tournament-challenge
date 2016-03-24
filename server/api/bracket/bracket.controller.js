@@ -66,6 +66,10 @@ export function index(req, res) {
     .catch(handleError(res));
 }
 
+export function stats(req, res) {
+  res.json(Bracket.stats(1024));
+}
+
 // Gets a single Bracket from the DB
 export function show(req, res) {
   Bracket.findByIdAsync(req.params.id)

@@ -5,6 +5,7 @@ var controller = require('./bracket.controller');
 
 var router = express.Router();
 
+router.get('/stats', controller.stats);
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
